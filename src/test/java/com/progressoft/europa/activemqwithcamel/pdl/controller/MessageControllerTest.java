@@ -21,7 +21,7 @@ class MessageControllerTest {
     private MockMvc mockMvc;
 
     @MockitoBean
-    private MessageService messageService;
+    private MessageService  messageService;
 
     @Test
     void givenValidMessageRequest_whenSendMessage_thenReturnsCorrelationId() throws Exception {
