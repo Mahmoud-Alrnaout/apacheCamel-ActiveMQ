@@ -11,8 +11,13 @@
     <groupId>com.progressoft.europa.activemqwithcamel</groupId>
     <artifactId>pdl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>activemqpdl</name>
     <description>activemqpdl</description>
+    <modules>
+        <module>app</module>
+        <module>camel-mq</module>
+    </modules>
     <properties>
         <java.version>23</java.version>
     </properties>
