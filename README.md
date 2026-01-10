@@ -22,4 +22,10 @@ This diagram illustrates the flow of sending and receiving messages in the syste
 6. **Controller Receives Response**  
    The system receives the response from ActiveMQ, matches it with the original `correlationId`, and returns the response to the client.
 
+
+
+   ![Alt text](flowchart.png)
+
+
 This flow ensures reliable asynchronous messaging while maintaining request-response tracking.
+

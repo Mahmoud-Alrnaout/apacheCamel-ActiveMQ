@@ -1,6 +1,5 @@
 package com.progressoft.europa.activemqwithcamel.data;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

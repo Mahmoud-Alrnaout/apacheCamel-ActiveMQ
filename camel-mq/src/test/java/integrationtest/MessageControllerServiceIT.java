@@ -32,7 +32,7 @@ class MessageControllerServiceIT {
     private BlockingQueue<Exchange> receivedMessages;
 
     @Test
-    void shouldSendMessageAndConsumeIt() throws Exception {
+    void givenMessageRequest_whenSendMessage_thenShouldSendMessageThrowSedaRoutes() throws Exception {
         MessageRequest request = new MessageRequest();
         request.setSender("Mahmoud");
         request.setContent("Full Integration Test");
