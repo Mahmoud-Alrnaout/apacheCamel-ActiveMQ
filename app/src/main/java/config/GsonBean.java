@@ -1,4 +1,4 @@
-package com.progressoft.europa.activemqwithcamel.config;
+package config;
 
 import com.google.gson.Gson;
 import org.springframework.context.annotation.Bean;

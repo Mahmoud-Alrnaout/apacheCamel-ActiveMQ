@@ -1,4 +1,4 @@
-package com.progressoft.europa.activemqwithcamel.config;
+package config;
 
 import com.progressoft.europa.activemqwithcamel.websockets.MessageWebSocketHandler;
 import org.springframework.context.annotation.Configuration;

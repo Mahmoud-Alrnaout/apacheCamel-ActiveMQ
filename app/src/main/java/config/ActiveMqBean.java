@@ -1,4 +1,4 @@
-package com.progressoft.europa.activemqwithcamel.config;
+package config;
 
 import jakarta.jms.ConnectionFactory;
 import org.apache.activemq.ActiveMQConnectionFactory;
