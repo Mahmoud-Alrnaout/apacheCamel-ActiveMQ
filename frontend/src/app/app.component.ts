@@ -28,8 +28,8 @@ export class AppComponent implements OnInit, OnDestroy {
   isConnected: boolean = false;
 
   constructor(
-    private messageService: MessageService,
-    private webSocketService: WebSocketService
+      private messageService: MessageService,
+      private webSocketService: WebSocketService
   ) {}
 
   ngOnInit(): void {
@@ -88,26 +88,38 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private handleWebSocketMessage(response: MessageResponse): void {
-    // Find the message by correlationId and update it with response
-    const message = this.messages.find(m => m.id === response.correlationId);
+    console.log('🔔 WebSocket received:', response);
+    console.log('📩 Response content:', response.data?.content);
 
-    if (message) {
-      message.status = 'replied';
-      message.response = response.content;
-      message.responseTimestamp = new Date(response.timestamp);
+    const messageIndex = this.messages.findIndex(m => m.id === response.correlationId);
+
+    if (messageIndex !== -1) {
+      // Create a NEW object to trigger change detection
+      this.messages[messageIndex] = {
+        ...this.messages[messageIndex],  // Copy all existing properties
+        status: 'replied',
+        response: response.data.content,  // <-- FIXED: Access nested content
+        responseTimestamp: new Date(response.timestamp)
+      };
+
+      // Force array reference change to trigger Angular
+      this.messages = [...this.messages];
+
+      console.log('✅ Message updated at index:', messageIndex);
     } else {
-      // If message not found, create a new entry (in case of page refresh)
+      // If message not found, create a new entry
       const displayMessage: DisplayMessage = {
         id: response.correlationId,
         sender: 'Unknown',
         content: 'Original message not found',
         status: 'replied',
         timestamp: new Date(response.timestamp),
-        response: response.content,
+        response: response.data.content,  // <-- FIXED: Access nested content
         responseTimestamp: new Date(response.timestamp)
       };
 
       this.messages.unshift(displayMessage);
+      console.log('⚠️ Original message not found, created new entry');
     }
   }
 

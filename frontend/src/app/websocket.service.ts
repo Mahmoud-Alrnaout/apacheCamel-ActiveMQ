@@ -3,9 +3,13 @@ import { Subject, Observable } from 'rxjs';
 
 export interface MessageResponse {
   correlationId: string;
-  content: string;
-  status: string;
-  timestamp: string;
+  data: {
+    correlationId: string;
+    content: string;
+    status: string;
+    timestamp?: string;
+  };
+  timestamp: number;
 }
 
 @Injectable({
