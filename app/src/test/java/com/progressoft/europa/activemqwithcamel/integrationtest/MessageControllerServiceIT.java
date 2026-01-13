@@ -1,8 +1,8 @@
-package integrationtest;
+package com.progressoft.europa.activemqwithcamel.integrationtest;
 
 import com.progressoft.europa.activemqwithcamel.ActivemqpdlApplication;
+import com.progressoft.europa.activemqwithcamel.config.CamelTestConfig;
 import com.progressoft.europa.activemqwithcamel.data.MessageRequest;
-import config.CamelTestConfig;
 import org.apache.camel.Exchange;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package config;
+package com.progressoft.europa.activemqwithcamel.config;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;

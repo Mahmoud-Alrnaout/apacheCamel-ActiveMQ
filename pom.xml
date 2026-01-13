@@ -17,6 +17,7 @@
     <modules>
         <module>app</module>
         <module>camel-mq</module>
+        <module>core</module>
     </modules>
     <properties>
         <java.version>23</java.version>
