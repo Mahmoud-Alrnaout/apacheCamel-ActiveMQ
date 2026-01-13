@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="header">
+    <h1>ActiveMQ Camel Messaging</h1>
+    <div class="connection-status" [class.connected]="isConnected" [class.disconnected]="!isConnected">
+      <span class="status-dot"></span>
+      {{ isConnected ? 'Connected' : 'Disconnected' }}
+    </div>
+  </div>
+
+  <div class="message-form">
+    <h2>Send Message</h2>
+    <form (ngSubmit)="sendMessage()">
+      <div class="form-group">
+        <label for="sender">Your Name:</label>
+        <input
+          type="text"
+          id="sender"
+          [(ngModel)]="senderName"
+          name="sender"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea
+          id="message"
+          [(ngModel)]="messageContent"
+          name="message"
+          placeholder="Enter your message"
+          rows="4"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn-send">
+        Send Message
+      </button>
+    </form>
+  </div>
+
+  <div class="messages-container">
+    <h2>Messages</h2>
+
+    <div *ngIf="messages.length === 0" class="no-messages">
+      No messages yet. Send your first message!
+    </div>
+
+    <div *ngFor="let message of messages" class="message-card">
+      <div class="message-header">
+        <div class="message-info">
+          <span class="sender">{{ message.sender }}</span>
+          <span class="timestamp">{{ message.timestamp | date:'short' }}</span>
+        </div>
+        <div class="status" [ngClass]="getStatusClass(message.status)">
+          {{ getStatusText(message.status) }}
+        </div>
+      </div>
+
+      <div class="message-body">
+        <div class="message-content">
+          <strong>Message:</strong>
+          <p>{{ message.content }}</p>
+        </div>
+
+        <div *ngIf="message.response" class="response-content">
+          <strong>Response:</strong>
+          <p>{{ message.response }}</p>
+          <span class="response-time" *ngIf="message.responseTimestamp">
+            Received at: {{ message.responseTimestamp | date:'short' }}
+          </span>
+        </div>
+      </div>
+
+      <div class="correlation-id">
+        <small>Correlation ID: {{ message.id }}</small>
+      </div>
+    </div>
+  </div>
+</div>
